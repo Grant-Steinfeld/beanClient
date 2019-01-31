@@ -5,6 +5,7 @@ const { FileSystemWallet, Gateway } = require('fabric-network');
 const fs = require('fs');
 
 // A wallet stores a collection of identities for use
+
 const wallet = new FileSystemWallet('./local_fabric/wallet');
 
 class BlockchainClient {
@@ -26,7 +27,10 @@ class BlockchainClient {
 
       let connectionOptions = {
         identity: identityLabel,
-        wallet: wallet
+        wallet: wallet,
+        discovery: {
+          asLocalhost: true
+        }
       };
 
       // Connect to gateway using network.yaml file and our certificates in _idwallet directory
